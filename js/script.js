@@ -1,18 +1,8 @@
-/*
-Descrizione:
-Partendo dai file nello starter implementare la funzione dei bottoni (next e previous) dello slider usando Vue (prima però create la struttura dati).
-Bonus:
-1- al click su una thumb, visualizzare in grande l'immagine corrispondente
-2- applicare l'autoplay allo slider: ogni 3 secondi, cambia immagine automaticamente
-3- quando il mouse va in hover sullo slider, bloccare l'autoplay e farlo riprendere quando esce
-Consiglio del giorno:
-- regola d'oro: riciclare ovunque possibile! E il riciclo spesso va a braccetto con le funzioni! Sapendole sfruttare bene, l'esercizio si riduce a poche righe ;)
-Buon lavoro e buon divertimento!
-*/
 const app = new Vue({
 	el: "#root",
 	data: {
 		activeSlide: 0,
+		interval: null,
 		slidesArray: [
 			{
 				title: "Svezia",
@@ -50,17 +40,31 @@ const app = new Vue({
 				this.activeSlide = 0;
 			} else {
 				this.activeSlide++;
-			}
+			};
+            this.stopTimer();
+            this.startTimer();
 		},
 		prevSlide() {
-			if (this.activeSlide == 0) {
-				this.activeSlide = this.slidesArray.length -1;
+            if (this.activeSlide == 0) {
+                this.activeSlide = this.slidesArray.length - 1;
 			} else {
-				this.activeSlide--;
+                this.activeSlide--;
 			}
+            this.stopTimer();
+            this.startTimer();
+		},
+		startTimer() {
+			this.interval = setInterval(this.nextSlide, 3000);
+		},
+		stopTimer() {
+			clearInterval(this.interval);
+			this.interval = null;
+		},
+		cLog() {
+			console.log(this.hover);
 		},
 	},
-    mounted: function () {
-        setInterval(this.nextSlide, 3000)
-    }
+	mounted: function () {
+		this.startTimer();
+	},
 });
