@@ -13,7 +13,7 @@ Buon lavoro e buon divertimento!
 const app = new Vue({
 	el: "#root",
 	data: {
-        activeSlide: 0,
+		activeSlide: 0,
 		slidesArray: [
 			{
 				title: "Svezia",
@@ -24,14 +24,12 @@ const app = new Vue({
 			{
 				title: "Svizzera",
 				image: "img/02.jpg",
-				content:
-					"Lorem ipsum",
+				content: "Lorem ipsum",
 			},
 			{
 				title: "Gran Bretagna",
 				image: "img/03.jpg",
-				content:
-					"Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+				content: "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
 			},
 			{
 				title: "Germania",
@@ -46,5 +44,21 @@ const app = new Vue({
 					"Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam",
 			},
 		],
+	},
+	methods: {
+		nextSlide() {
+			if (this.activeSlide == this.slidesArray.length - 1) {
+				this.activeSlide = 0;
+			} else {
+				this.activeSlide++;
+			}
+		},
+		prevSlide() {
+			if (this.activeSlide == 0) {
+				this.activeSlide = this.slidesArray.length -1;
+			} else {
+				this.activeSlide--;
+			}
+		},
 	},
 });
