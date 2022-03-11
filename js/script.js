@@ -9,7 +9,6 @@ Consiglio del giorno:
 - regola d'oro: riciclare ovunque possibile! E il riciclo spesso va a braccetto con le funzioni! Sapendole sfruttare bene, l'esercizio si riduce a poche righe ;)
 Buon lavoro e buon divertimento!
 */
-
 const app = new Vue({
 	el: "#root",
 	data: {
@@ -61,4 +60,7 @@ const app = new Vue({
 			}
 		},
 	},
+    mounted: function () {
+        setInterval(this.nextSlide, 3000)
+    }
 });
