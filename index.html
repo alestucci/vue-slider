@@ -20,7 +20,7 @@
 				</div>
 			</div>
 
-			<div class="thumbs">
+			<div @mouseover="stopTimer" @mouseout="startTimer" class="thumbs">
 				<div v-for="(slide, index) in slidesArray" @click="activeSlide = index" class="thumb" :class="index == activeSlide ? 'active' : ''" >
 					<img :src="slide.image" :alt="slide.title">
 				</div>

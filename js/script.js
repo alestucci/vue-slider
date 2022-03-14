@@ -60,9 +60,6 @@ const app = new Vue({
 			clearInterval(this.interval);
 			this.interval = null;
 		},
-		cLog() {
-			console.log(this.hover);
-		},
 	},
 	mounted: function () {
 		this.startTimer();
